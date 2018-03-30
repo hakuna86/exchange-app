@@ -25,12 +25,12 @@
 #### 프로젝트 실행 방법
 
 ##### 프론트 엔드와 서버에 각각 의존성을 설치하고, 프론트 엔드에 빌드를 수행 후 서버를 실행한다.
- - 서버 실행
+서버 실행
   1. cd backend
   2. npm install
   3. node index.js // localhost:5000 번으로 실행된다.
 
-- 프론트엔드
+프론트엔드
   1. cd exchange-app
   2. yarn install
   3. yarn start // localhost:3000 으로 개발용 서버가 열린다.
