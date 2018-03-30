@@ -1,6 +1,5 @@
 import * as types from '../actions/ActionTypes';
 import insertSortingArr from '../App/lib/insertSortingArr';
-import executed from '../App/lib/executed';
 
 const initialState = {
   sellingList : [],

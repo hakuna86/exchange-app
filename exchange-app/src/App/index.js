@@ -19,12 +19,16 @@ class App extends Component {
     socket.on("exchageData", (data) => {
       if(data.type === 'S'){
         _getSellingData(data);
-        _execute(data, this.props.sell);
+        //_execute(data, this.props.sell);
       }else{
         _getBuyData(data);
-        _execute(data, this.props.buy);
+        //_execute(data, this.props.buy);
       }
     });
+  }
+
+  componentWillReceiveProps(nextProps) {
+
   }
   
   render() {

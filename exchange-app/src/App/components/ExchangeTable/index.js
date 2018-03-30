@@ -18,8 +18,8 @@ class ExchangeTable extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState((prevState) => {
       return {
-        buying : margeValueToArr(nextProps.buy, 'price', 'quantity').reverse(),
-        sell : margeValueToArr(nextProps.sell, 'price', 'quantity'),
+        buying : margeValueToArr(nextProps.buy, 'price', 'quantity'),
+        sell : margeValueToArr(nextProps.sell, 'price', 'quantity').reverse(),
         execute : margeValueToArr(nextProps.excute, 'price', 'quantity'),
       }
     });
