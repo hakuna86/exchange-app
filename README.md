@@ -10,17 +10,19 @@
      > - 데이터를 가공 할 때, 항상 정렬된 리스트를 이용해서 작업을 수행하므로, 서치 작업등의 오버헤드가 적음
      > - 단점으로는 해당 데이터가 끝 부분에 있을때는 처리 오버헤드가 증가되는 점
      > - src > lib에 공통 정렬 및 머지함수를 구현해서, 유틸의 형식으로 사용하도록 구성
-     > - TDD 방법으로 테스트 설계후, 해당 기능을 구현했음
+     > - TDD 방법으로 함수 테스트 설계후, 해당 기능을 구현했음
 
 #### Back End 구성
     - 서버 사이드 프레임워크 :  NodeJS, ExpressJS
     - Websocket : 소켓통신 방식을 사용하기 위한 라이브러리 [socket.io] https://socket.io/
+    - 테스트 도구로서 mocha를 이용함
 
 #### Front End 구성
     - SPA(Single Page Applictaion)
     - Framework : ReactJS
     - Websocket : socket.io.clinet https://www.npmjs.com/package/socket.io-client
     - 리덕스를 구현하여, 매수, 매도가격 데이터를 스토어에서 관리 및 변경하는 구성
+    - 테스트 도구로서 Jest를 이용함
 
 #### 프로젝트 실행 방법
 
@@ -31,7 +33,12 @@
   2. npm install
   3. node index.js // localhost:5000 번으로 실행된다.
 
+> test : 해당 폴더에서 npm test를 실행한다.
+
 프론트엔드
   1. cd exchange-app
   2. yarn install
   3. yarn start // localhost:3000 으로 개발용 서버가 열린다.
+  4. yarn build // 웹어플리케이션을 빌드하여, backend/public 으로 결과물을 저장한다.
+
+> test : 해당 폴더에서 yarn test를 실행한다.
