@@ -1,0 +1,11 @@
+{
+  "name": "exchage",
+  "version": "1.0.0",
+  "description": "실시간 매도, 매수가를 보여주는 어플리케이션",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hakuna",
+  "license": "ISC"
+}

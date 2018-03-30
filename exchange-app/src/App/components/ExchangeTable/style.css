@@ -1,0 +1,35 @@
+.exchange-table table {
+    border-collapse: separate;
+    border-spacing: 1px;
+    text-align: center;
+    line-height: 1.5;
+    margin: 20px 10px;
+}
+.exchange-table table th {
+    width: 140px;
+    padding: 8px;
+    font-weight: bold;
+    vertical-align: top;
+    color: whitesmoke;
+    background: goldenrod ;
+}
+.exchange-table table td {
+    width: 140px;
+    padding: 7px;
+    vertical-align: top;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+}
+.exchange-table table .buy {
+  color : blue;
+}
+.exchange-table table .sell {
+  color : red;
+}
+.sale {
+  float: left;
+}
+
+.complate {
+  float: left;
+}
