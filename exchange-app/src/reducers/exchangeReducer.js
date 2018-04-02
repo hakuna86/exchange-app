@@ -8,8 +8,18 @@ const initialState = {
 };
 
 const exchangeReducer = (state = initialState, action) => {
-  const {sellingList, buyList, executedList} = state;
+  const {sellingList, buyList } = state;
   switch (action.type) {
+    case types.MODIFY_SELLING_DATA:
+      return {
+        ...state,
+        sellingList : [...action.payload.modifyArray]
+      }
+    case types.MODIFY_BUY_DATA:
+      return {
+        ...state,
+        buyList : [...action.payload.modifyArray]
+      }
     case types.GET_BUY_DATA:
       return {
         ...state,

@@ -6,6 +6,7 @@ describe('executed 함수를 테스트 한다.', () => {
     let inputData = { type : 'B', price : 5, quantity : 5 };
     let sellingList = [];
     expect(executed(inputData, sellingList)).toEqual({
+      inputData : { type : 'B', price : 5, quantity : 5 },
       executedData : [],
       modifiedData : []
     });
@@ -15,12 +16,23 @@ describe('executed 함수를 테스트 한다.', () => {
     let inputData = { type : 'B', price : 5, quantity : 5 };
     let sellingList = [{ type : 'S', price : 5, quantity : 5 }];
     expect(executed(inputData, sellingList)).toEqual({
+      inputData : { type : 'B', price : 5, quantity : 0 },
       executedData : [ { type : 'S', price : 5, quantity : 5 } ],
       modifiedData : []
     });
   });
+
+  it('리스트에 채결할 데이터가 존재하지 않을때, 결과값 확인', () => {
+    let inputData = { type : 'B', price : 5, quantity : 5 };
+    let sellingList = [{ type : 'S', price : 6, quantity : 8 }];
+    expect(executed(inputData, sellingList)).toEqual({
+      inputData : { type : 'B', price : 5, quantity : 5 },
+      executedData : [],
+      modifiedData : [{ type : 'S', price : 6, quantity : 8 }]
+    });
+  });
   
-  it('매수데이터가 들어왔을때, 매도리스트를 검색해서 가격이 작은것과 같은것이 리턴되는지 되고, 채결데이터를 제외한 배열이 리털되는지 확인한다.', () => {
+  it('매수데이터가 들어왔을때, 매도리스트를 검색해서 가격이 작은것과 같은것이 리턴되는지 되고, 채결데이터를 제외한 배열이 리턴되는지 확인한다.', () => {
     let inputData = { type : 'B', price : 5, quantity : 5 };
     let sellingList = [
       { type : 'S', price : 4, quantity : 3 },
@@ -39,7 +51,9 @@ describe('executed 함수를 테스트 한다.', () => {
       { type : 'S', price : 6, quantity : 7 }
     ];
 
+
     expect(executed(inputData, sellingList)).toEqual({
+      inputData : { type : 'B', price : 5, quantity : 0 },
       executedData : result,
       modifiedData : afterSellingList
     });
@@ -65,6 +79,7 @@ describe('executed 함수를 테스트 한다.', () => {
     ];
     
     expect(executed(inputData, buyList)).toEqual({
+        inputData : { type : 'S', price : 5, quantity : 0 },
         executedData : result,
         modifiedData : afterBuyList
       });

@@ -3,7 +3,7 @@
  * 매수가와 매도가를 이용하여, 체결데이터를 리턴한다.
  * @param data
  * @param refArr type array
- * return { 체결된 데이터, 값이 수정된 배열 }
+ * return { 체결 데이터, 매도 매수 리스트 수정 인덱스와 수정할 값, 매도 매수 리스트에 넣을 값}
  */
 
  import margeValueToArr from './margeValueToArr';
@@ -17,12 +17,14 @@
           if(data.quantity > 0){
             data = {...data, quantity : data.quantity - item.quantity };
             init.push(item);
-            delete modifiedData[i];
+            modifiedData[i].quantity = 0;
+            //delete modifiedData[i];
           }
         }else{
           if(data.quantity > 0){
             modifiedData[i] = {...item, quantity : item.quantity - data.quantity };
             init.push({...item, quantity : data.quantity });
+            data = {...data, quantity :  data.quantity -  data.quantity };
           }
         }
       }
@@ -32,12 +34,14 @@
           if(data.quantity > 0){
             data = {...data, quantity : data.quantity - item.quantity };
             init.push(item);
-            delete modifiedData[i];
+            modifiedData[i].quantity = 0;
+            //delete modifiedData[i];
           }
         }else{
           if(data.quantity > 0){
             modifiedData[i] = {...item, quantity : item.quantity - data.quantity };
             init.push({...item, quantity : data.quantity });
+            data = {...data, quantity :  data.quantity -  data.quantity };
           }
         }
       }
@@ -45,16 +49,17 @@
      return init
    }, []);
 
-   let filterModifyData = modifiedData.filter((item) => {
-     if(item){
+   let newModifiedData = modifiedData.filter((item, i) => {
+     if(item.quantity !== 0){
        return item;
      }
    })
 
    return {
-     executedData : margeValueToArr(result,'price', 'quantity'),
-     modifiedData : filterModifyData
-   };
+      inputData : data,
+      executedData : margeValueToArr(result, 'price', 'quantity'),
+      modifiedData : newModifiedData
+   }
  }
 
  export default executed;
